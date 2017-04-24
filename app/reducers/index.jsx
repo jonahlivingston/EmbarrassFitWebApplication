@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux'
+import latLong from "./latLong"
+
 
 const rootReducer = combineReducers({
-  auth: require('./auth').default,  
+  adressInfo:latLong
 })
 
 export default rootReducer

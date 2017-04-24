@@ -27,7 +27,7 @@ require('./models')
 
 // sync the db, creating it if necessary
 function sync(force=app.isTesting, retries=0, maxRetries=5) {
-  return db.sync({force})
+  return db.sync({force:false})
     .then(ok => debugDB(`Synced models to db ${url}`))
     .catch(fail => {
       // Don't do this auto-create nonsense in prod, or
@@ -48,6 +48,7 @@ function sync(force=app.isTesting, retries=0, maxRetries=5) {
       ).then(() => sync(true, retries + 1))
     })
 }
+require("../sendSms")
 
 // Note that db.didSync is a promise, rather than returning a promise
 db.didSync = sync()

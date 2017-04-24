@@ -1,0 +1,33 @@
+.red{
+    color:red
+}
+
+#white{
+    margin-left: 20px;
+    color:white;
+}
+
+#workoutoptions{
+    margin-top:15px
+}
+
+#blocklabel{
+    display: block;
+    margin-top:10px;
+}
+
+#submitsignup{
+    align-self: center;
+    /*margin-left: auto;
+    margin-right: auto;*/
+    }
+
+#coverImage{
+    width:100%;
+    height:700px;
+}
+
+#JoinButton{
+    position:absolute
+    
+}

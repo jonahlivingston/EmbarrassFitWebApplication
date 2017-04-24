@@ -10,10 +10,26 @@ module.exports = require('express').Router()
 		User.findAll()
 		.then(users => res.json(users))
 		.catch(next))
+	
 	.post('/', (req, res, next) =>
 		User.create(req.body)
-		.then(user => res.status(201).json(user))
+		.then((user)=>{
+			res.status(201).json(user)
+		})
 		.catch(next))
+	
+	.put("/:id/workout",(req,res,next)=>
+		User.findById(req.params.id)
+		.then((user)=>{
+			return user.increment(['weeklyWorkoutsCompleted'], { by: 1 })
+		})
+		.then((updated)=>{
+			console.log(updated)
+			res.sendStatus(200)
+		})
+		.catch(next)
+	)
+
 	.get('/:id', mustBeLoggedIn, (req, res, next) => 
 		User.findById(req.params.id)
 		.then(user => res.json(user))
