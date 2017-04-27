@@ -9,7 +9,10 @@ constructor(props){
         weeklyWorkoutGoal:1,
         gymLocation:"",
         embarassingText: "",
-        embarassingTextRecepient:""
+        embarassingTextRecepient:"",
+        weeklyWorkoutsCompleted:0,
+        password:"",
+        email:""
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -24,8 +27,8 @@ handleChange(name,stateProperty){
 
 handleSubmit(event){
     event.preventDefault()
-    console.log(typeof this.state.gymLocation)
-    const address = this.state.gymLocation.split(" ").join("+")
+    console.log(this.state.gymLocation.address_components[0]["long_name"])
+    const address = this.state.gymLocation.address_components[0]["long_name"]+"+"+this.state.gymLocation.address_components[1]["long_name"]+"+"+this.state.gymLocation.address_components[2]["long_name"]+"+"+this.state.gymLocation.address_components[3]["long_name"]+"+"+this.state.gymLocation.address_components[4]["long_name"]+"+"+this.state.gymLocation.address_components[5]["long_name"]+"+"+this.state.gymLocation.address_components[6]["long_name"]
     const searchString = "https://maps.googleapis.com/maps/api/geocode/json?address="
     const key = "&key=AIzaSyBSGAwfP8LYBNBHQphQJiY_dZ4riq7l1a8"
     // https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBSGAwfP8LYBNBHQphQJiY_dZ4riq7l1a8"
@@ -42,7 +45,9 @@ handleFormSubmit(event){
         recipientNumber:this.state.embarassingTextRecipient,
         secret:this.state.embarassingText,
         longitude:this.props.adressInfo.longitude,
-        latitude:this.props.adressInfo.latitude
+        latitude:this.props.adressInfo.latitude,
+        email:this.state.email,
+        password:this.state.password
 })
 }
 

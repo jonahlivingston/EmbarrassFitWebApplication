@@ -11,12 +11,15 @@ module.exports = require('express').Router()
 		.then(users => res.json(users))
 		.catch(next))
 	
-	.post('/', (req, res, next) =>
+	.post('/', (req, res, next) =>{
 		User.create(req.body)
 		.then((user)=>{
+			console.log("the user looks like",user)
 			res.status(201).json(user)
 		})
-		.catch(next))
+		.catch(next)
+	})
+	
 	
 	.put("/:id/workout",(req,res,next)=>
 		User.findById(req.params.id)

@@ -15,7 +15,7 @@ setInterval(function () {
     })
         .then((users) => {
             console.log(users)
-            users.forEach((user) => {
+            return users.forEach((user) => {
                 if (user.weeklyWorkoutGoal >= user.weeklyWorkoutsCompleted) {
                     client.messages.create({
                         to: user.recipientNumber,
@@ -33,7 +33,7 @@ setInterval(function () {
             })
         })
 }
-    , 5000)
+    , 86400000)
 
 
 //     client.messages.create({

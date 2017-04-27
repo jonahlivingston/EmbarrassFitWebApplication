@@ -4,7 +4,6 @@ import { submitGymAddress } from "../actioncreators"
 import {submitSignupForm} from "../actioncreators"
 
 const mapStateToProps = (state) => {
-    console.log("thisisstate",state)
     return {
         adressInfo: state.adressInfo
     }

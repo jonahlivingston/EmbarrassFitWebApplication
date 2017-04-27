@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router"
 const Navbar = (props) => {
+    console.log("proops",props)
     return (
         <nav className="navbar navbar-inverse navbar-static-top">
             <div className="container-fluid">
@@ -14,9 +15,13 @@ const Navbar = (props) => {
                 <Link to="/testemonials">
                 <li className="navbar-text" id="white">Testemonials</li>
                 </Link>
+                <li className="navbar-text" id="white">{props.auth&&`Signed in as: ${props.auth.name}`}</li>
             </ul>
         </div>
         </nav>
     )   
 }
+
+
+
 export default Navbar;
