@@ -5,13 +5,14 @@ import {submitSignupForm} from "../actioncreators"
 
 const mapStateToProps = (state) => {
     return {
-        adressInfo: state.adressInfo
+        addressInfo: state.addressInfo,
+        auth:state.auth
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        submitAdress(searchString) {
+        submitAddress(searchString) {
             dispatch(submitGymAddress(searchString))
         },
         submitSignupForm(userData){

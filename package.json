@@ -57,6 +57,7 @@
     "passport-local": "^1.0.0",
     "pg": "^6.1.0",
     "pretty-error": "^2.0.2",
+    "rc-progress": "^2.1.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-google-autocomplete": "^1.0.13",
@@ -81,6 +82,7 @@
     "mocha": "^3.1.2",
     "nodemon": "^1.11.0",
     "supertest": "^3.0.0",
+    "url-loader": "^0.5.8",
     "volleyball": "^1.4.1",
     "webpack": "^2.2.1",
     "webpack-livereload-plugin": "^0.10.0"

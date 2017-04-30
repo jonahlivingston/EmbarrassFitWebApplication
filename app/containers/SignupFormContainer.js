@@ -9,7 +9,7 @@ constructor(props){
         weeklyWorkoutGoal:1,
         gymLocation:"",
         embarassingText: "",
-        embarassingTextRecepient:"",
+        embarassingTextRecipient:"",
         weeklyWorkoutsCompleted:0,
         password:"",
         email:""
@@ -34,20 +34,21 @@ handleSubmit(event){
     // https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBSGAwfP8LYBNBHQphQJiY_dZ4riq7l1a8"
 
     // // this.props.submitSignupForm(this.state.name,this.state.password,this.state.weeklyworkoutGoal,this.state.gymLocation,this.state.embarassingText,this.state.embarassingTextRecipient)
-    this.props.submitAdress(searchString+address+key);
+    this.props.submitAddress(searchString+address+key);
 }
 
 handleFormSubmit(event){
-    event.preventDefault()
     this.props.submitSignupForm({
         name:this.state.name,
         weeklyWorkoutGoal:this.state.weeklyWorkoutGoal,
+        weeklyWorkoutsCompleted:0,
         recipientNumber:this.state.embarassingTextRecipient,
         secret:this.state.embarassingText,
-        longitude:this.props.adressInfo.longitude,
-        latitude:this.props.adressInfo.latitude,
+        longitude:this.props.addressInfo.longitude,
+        latitude:this.props.addressInfo.latitude,
         email:this.state.email,
-        password:this.state.password
+        password:this.state.password,
+        remainingDays:7
 })
 }
 
@@ -55,8 +56,8 @@ render(){
     console.log(this.props)
     return(
     <div>
-    < SignupForm handleFormSubmit={this.handleFormSubmit} handleFormSubmit={this.handleFormSubmit}handleSubmit={this.handleSubmit} handleChange={this.handleChange} zipCode={this.props.adressInfo.zipCode}/>
-    {this.props.adressInfo.latitude&&
+    < SignupForm auth={this.props.auth}field={this.state} handleFormSubmit={this.handleFormSubmit} handleFormSubmit={this.handleFormSubmit}handleSubmit={this.handleSubmit} handleChange={this.handleChange} zipCode={this.props.addressInfo.zipCode}/>
+    {this.props.addressInfo.latitude&&
     <div>
     {/*<h1>Latitude: {this.props.adressInfo.latitude}</h1>
     <h1>Longitude: {this.props.adressInfo.longitude}</h1>*/}

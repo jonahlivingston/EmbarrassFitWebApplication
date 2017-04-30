@@ -9,13 +9,15 @@ const OAuth = require ("./oauth")
 
 const User = db.define('users', {
   name: Sequelize.STRING,
+
   weeklyWorkoutGoal: Sequelize.INTEGER,
-  latitude: Sequelize.INTEGER,
-  longitude: Sequelize.INTEGER,
+  latitude: Sequelize.FLOAT,
+  longitude: Sequelize.FLOAT,
   secret: Sequelize.TEXT,
   recipientNumber: Sequelize.STRING,
   weeklyWorkoutsCompleted: Sequelize.INTEGER,
   remainingDays:Sequelize.INTEGER,
+  lastCheckin:Sequelize.STRING,
   ///make email validation
     email: {
     type: Sequelize.STRING,
@@ -25,10 +27,13 @@ const User = db.define('users', {
 },
 password_digest: Sequelize.STRING, // This column stores the hashed password in the DB, via the beforeCreate/beforeUpdate hooks
 password: Sequelize.VIRTUAL
-}
-,
+},{
 
-{
+
+// }
+// ,
+
+
   hooks:{
     beforeCreate: setEmailAndPassword,
     beforeUpdate: setEmailAndPassword,
@@ -63,7 +68,8 @@ password: Sequelize.VIRTUAL
         )
       }
     }
-})
+}
+)
 
 function setEmailAndPassword(user) {
   user.email = user.email && user.email.toLowerCase()
@@ -77,5 +83,5 @@ function setEmailAndPassword(user) {
   )
 }
 module.exports = User
-module.exports.associations = User.hasMany(OAuth)
+// module.exports.associations = User.hasMany(OAuth)
 

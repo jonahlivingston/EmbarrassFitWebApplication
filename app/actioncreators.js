@@ -3,10 +3,10 @@ import { whoami } from "./reducers/auth"
 
 
 
-const syncSubmitGymAddress = (adressInfo) => {
+const syncSubmitGymAddress = (addressInfo) => {
     return {
         type: "SYNC_SUBMIT_GYM_ADDRESS",
-        adressInfo: adressInfo
+        addressInfo: addressInfo
     }
 }
 
@@ -33,7 +33,6 @@ export const submitSignupForm = (signupInfo) => {
             })
     }
 }
-
 
 export const submitGymAddress = (searchString) => {
     return (dispatch) => {

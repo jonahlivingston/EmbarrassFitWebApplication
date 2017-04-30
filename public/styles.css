@@ -1,6 +1,12 @@
 .red{
     color:red
 }
+.line{
+  padding-top:60px;
+  white-space:no-wrap;
+  overflow:hidden;
+  text-align:center;
+}
 
 #white{
     margin-left: 20px;
@@ -31,3 +37,166 @@
     position:absolute
     
 }
+
+#headerpic{
+    background-image: url("./images/cover.jpg");
+    height:500px;
+    width:100%;
+    background-size:cover;
+}
+
+#Blushfit{
+  font-weight:800;
+  font-size:50pt;
+  padding-left:25px;
+  padding-right:25px;
+  padding-top: 25px;
+  text-align:center;
+  color:#fff;
+}
+
+#Blushfitsub{
+  font-weight:400;
+  font-size:28pt;
+  padding:1px;
+  text-align:center;
+  color:"grey";
+}
+
+.ghost-button {
+  margin-left: 133%;
+  margin-top:130px;
+  text-align: center;
+  font-size: 20px;
+  background-color: rgba(0,0,0,0);
+  width: 200px;
+  padding: 8px;
+  color: white;
+  border: 3px solid #fff;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.ghost-button:hover,
+.ghost-button:active {
+  background-color: #fff;
+  color: #000;
+  transition: background-color 0.3s ease-in,
+              color 0.3s ease-in;
+}
+
+#secondtab{
+height:500px;
+width:100%;
+background-size:cover;
+}
+
+#secondheading{
+ font-weight:600;
+  font-size:20pt;
+  padding-left:25px;
+  padding-right:25px;
+  padding-top: 5px;
+  text-align:center;
+  color:black;
+}
+.image{
+    margin-left: auto;
+    margin-right:auto;
+    height: 250px;
+    width: 250px;
+    background-size: 450px;
+}
+
+#imageone{
+    background-image: url("./images/whisper.jpg");
+}
+
+.steptitle{
+    text-align: center;
+    margin-left: auto;
+    margin-right:auto;
+}
+#imagetwo{
+    background-image: url("./images/workout.jpg");
+}
+
+#imagethree{
+    background-image: url("./images/laughing.jpg")
+}
+
+#signuppage{
+    background-image: url("./images/weights.jpg");
+    height:1000px;
+    border:solid;
+}
+#signupform{
+    width:40%;
+    margin-left:30%;
+    margin-top:5%;
+    border: 5px;
+    background-color:rgba(100,100,100,0.5);
+}
+label{
+    color:white;
+    font-size:20px;
+}
+
+.navbar{
+    margin-bottom:0px;
+    border-radius: 0px;
+}
+
+#workoutgoal{
+    height:50px;
+    width:50px;
+}
+Autocomplete{
+    height:20px;
+}
+
+.ghost-buttontwo {
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:15px;
+  text-align: center;
+  font-size: 20px;
+  background-color: rgba(0,0,0,0);
+  width: 200px;
+  padding: 8px;
+  color: white;
+  border: 3px solid #fff;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.ghost-buttontwo:hover,
+.ghost-buttontwo:active {
+  background-color: #fff;
+  color: #000;
+  transition: background-color 0.3s ease-in,
+              color 0.3s ease-in;
+}
+#addressbtn{
+    margin-top:12px;
+}
+
+.center{
+    height:100%;
+    text-align:center; 
+    width:100%;
+    margin-left: auto;
+    margin-right:auto;
+}
+.border{
+margin-left: 10%;
+margin-top: 20px;
+border:solid;
+}
+
+/*#circletwo{
+    padding-top:30px;
+}*/

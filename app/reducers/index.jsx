@@ -3,7 +3,7 @@ import latLong from "./latLong"
 import auth from "./auth"
 
 const rootReducer = combineReducers({
-  adressInfo:latLong,
+  addressInfo:latLong,
   auth: auth
 })
 

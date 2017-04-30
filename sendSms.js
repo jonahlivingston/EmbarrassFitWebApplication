@@ -14,9 +14,9 @@ setInterval(function () {
         }
     })
         .then((users) => {
-            console.log(users)
             return users.forEach((user) => {
-                if (user.weeklyWorkoutGoal >= user.weeklyWorkoutsCompleted) {
+                if (user.weeklyWorkoutGoal > user.weeklyWorkoutsCompleted) {
+                    console.log("goal: ",user.weeklyWorkoutGoal,"completed: ",user.weeklyWorkoutsCompleted,"daysremaining: ",user.remainingDays)
                     client.messages.create({
                         to: user.recipientNumber,
                         from: 14798020374,
@@ -33,7 +33,7 @@ setInterval(function () {
             })
         })
 }
-    , 86400000)
+    , 12000)
 
 
 //     client.messages.create({

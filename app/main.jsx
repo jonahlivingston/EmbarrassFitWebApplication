@@ -9,11 +9,13 @@ import SignupPage from "./components/SignupPage"
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import {whoami} from './reducers/auth'
-import Login from './components/Login'
+import LoginReduxContainer from "./reduxcontainers/LoginReduxContainer"
 import NavbarReduxContainer from "./reduxcontainers/NavbarReduxContainer"
+import UserReduxContainer from "./reduxcontainers/UserReduxContainer"
 import {whoami} from './reducers/auth'
-
+import User from "./components/User"
+import axios from "axios";
+import {authenticated} from "./reducers/auth"
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -44,8 +46,26 @@ function getUser(){
   store.dispatch(whoami())
 }
 
-//injectTapEventPlugin();
-// import googleMap from "./components/googleMap"
+function enterUser(){
+axios.get('/api/auth/whoami')
+.then(response => {
+const user = response.data
+store.dispatch(authenticated(user))
+  var auth = store.getState().auth
+  if (!store.getState().auth){
+    alert("user does not appear to be signed in")
+    browserHistory.push("/home")
+  }
+else{
+return axios.get(`/api/users/${auth.email}`)
+.then((user)=>{
+console.log("gotbacknewuser",user)
+store.dispatch(authenticated(user.data))
+})
+}
+})
+
+}
 
 render (
   <MuiThemeProvider>
@@ -54,8 +74,9 @@ render (
     <Route name='Home' path="/" onEnter={getUser} component={ExampleApp}>
     <IndexRoute component={HomePage}/>
       <Route path="/home" component={HomePage} />
-      <Route path="/login" component={LoginPage} />
+      <Route path="/login" component={LoginReduxContainer} />
       <Route path='/signup' component={SignupPage} />
+      <Route path="/dashboard" component={UserReduxContainer} onEnter={enterUser}/>
     </Route>
     </Router>
   </Provider>

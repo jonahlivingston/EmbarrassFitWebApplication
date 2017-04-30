@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import {browserHistory} from "react-router"
 const reducer = (state=null, action) => {
   switch (action.type) {
   case AUTHENTICATED:
@@ -14,11 +14,18 @@ export const authenticated = user => ({
 })
 
 export const login = (username, password) =>
-  dispatch =>
+  dispatch =>{
+    console.log("username",username,"password",password)
     axios.post('/api/auth/login/local',
       {username, password})
-      .then(() => dispatch(whoami()))
-      .catch(() => dispatch(whoami()))
+      .then(() => {
+        dispatch(whoami())})
+        browserHistory.push("/home")
+      .catch(() => {
+        dispatch(whoami())
+        alert("Incorrect Email or Password")
+      })
+  }
 
 export const logout = () =>
   dispatch =>
