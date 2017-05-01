@@ -44,9 +44,6 @@ setInterval(function () {
 
 
 
-
-
-
                         })
                     }
                     else {
@@ -67,7 +64,7 @@ setInterval(function () {
             })
         })
 }
-    , 3000)
+    , 4000)
 
 
 //     client.messages.create({
