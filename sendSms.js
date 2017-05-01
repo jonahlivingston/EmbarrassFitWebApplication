@@ -4,8 +4,9 @@ const client = require("twilio")(SID, authToken)
 var testNumber = 1;
 const User = require('APP/db/models/user')
 const Sequelize = require("sequelize")
-
+var nodemailer = require('nodemailer');
 setInterval(function () {
+    console.log("run")
     User.IncrementDay()
 
     User.findAll({
@@ -17,6 +18,7 @@ setInterval(function () {
             return users.forEach((user) => {
                 if (user.weeklyWorkoutGoal > user.weeklyWorkoutsCompleted) {
                     if (user.strikes > 1) {
+                        console.log(user.email)
                         var transporter = nodemailer.createTransport({
                             service: 'Outlook',
                             auth: {
@@ -65,7 +67,7 @@ setInterval(function () {
             })
         })
 }
-    , 12000)
+    , 3000)
 
 
 //     client.messages.create({
