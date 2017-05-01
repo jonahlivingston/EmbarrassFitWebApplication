@@ -6,7 +6,6 @@ import {connect, Provider} from 'react-redux'
 import HomePage from "./components/HomePage";
 import store from './store'
 import SignupPage from "./components/SignupPage"
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import ReactDOM from 'react-dom';
 import LoginReduxContainer from "./reduxcontainers/LoginReduxContainer"
 import NavbarReduxContainer from "./reduxcontainers/NavbarReduxContainer"
