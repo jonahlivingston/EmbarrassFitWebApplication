@@ -16,25 +16,51 @@ setInterval(function () {
         .then((users) => {
             return users.forEach((user) => {
                 if (user.weeklyWorkoutGoal > user.weeklyWorkoutsCompleted) {
-                   if (user.strikes>1){
-                        user.update({
-                            strikes:user.strikes-1
+                    if (user.strikes > 1) {
+                        var transporter = nodemailer.createTransport({
+                            service: 'Outlook',
+                            auth: {
+                                user: 'graceshopper@outlook.com', // Your email id
+                                pass: 'ShopperGrace' // Your password
+                            }
+                        });
+                        var mailOptions = {
+                            from: 'graceshopper@outlook.com', // sender address
+                            to: user.email, // list of receivers
+                            subject: 'Embarassment Approaches', // Subject line
+                            text: `Hey ${user.name} you missed your workout goal this week. One strike closer to embarassment.`
+                        };
+                        transporter.sendMail(mailOptions, function (error, info) {
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Message sent: ');
+                            };
                         })
-                   }
-                   else{
-                    return client.messages.create({
-                        to: user.recipientNumber,
-                        from: 14798020374,
-                        body: user.secret
-                    }, function (err, message) {
-                        if (err) {
-                            console.log("uydasdasd")
-                        }
-                        else {
+                        user.update({
+                            strikes: user.strikes - 1
+
+
+
+
+
+
+                        })
+                    }
+                    else {
+                        return client.messages.create({
+                            to: user.recipientNumber,
+                            from: 14798020374,
+                            body: user.secret
+                        }, function (err, message) {
+                            if (err) {
+                                console.log("uydasdasd")
+                            }
+                            else {
                                 return user.destroy()
-                        }
-                    })
-                }
+                            }
+                        })
+                    }
                 }
             })
         })
