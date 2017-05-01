@@ -8,7 +8,6 @@ import store from './store'
 import SignupPage from "./components/SignupPage"
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import ReactDOM from 'react-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import LoginReduxContainer from "./reduxcontainers/LoginReduxContainer"
 import NavbarReduxContainer from "./reduxcontainers/NavbarReduxContainer"
 import UserReduxContainer from "./reduxcontainers/UserReduxContainer"
@@ -32,14 +31,12 @@ const LoginPage = connect(
   //[auth:4 = >
 )(
   ({ user, children }) =>
-  <MuiThemeProvider>
     <div>
       <nav>
         {user ? <WhoAmI/> : <Login/>}
       </nav>
       {children}
     </div>
-  </MuiThemeProvider>
 )
 
 function getUser(){
@@ -68,7 +65,6 @@ store.dispatch(authenticated(user.data))
 }
 
 render (
-  <MuiThemeProvider>
   <Provider store={store}>
     <Router history={browserHistory}>
     <Route name='Home' path="/" onEnter={getUser} component={ExampleApp}>
@@ -80,7 +76,6 @@ render (
     </Route>
     </Router>
   </Provider>
-  </MuiThemeProvider>
   ,
   document.getElementById('main')
 )
