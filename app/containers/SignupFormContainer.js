@@ -12,7 +12,8 @@ constructor(props){
         embarassingTextRecipient:"",
         weeklyWorkoutsCompleted:0,
         password:"",
-        email:""
+        email:"",
+        strikes:3
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -48,7 +49,8 @@ handleFormSubmit(event){
         latitude:this.props.addressInfo.latitude,
         email:this.state.email,
         password:this.state.password,
-        remainingDays:7
+        remainingDays:7,
+        strikes:this.state.strikes
 })
 }
 

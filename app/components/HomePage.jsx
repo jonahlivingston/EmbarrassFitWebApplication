@@ -9,7 +9,7 @@ export default class HomePage extends Component {
           <div className="headertext">
             <div className="col-xs-4 line"><hr /></div>
             <div className="col-xs-4">
-              <h1 id="Blushfit">BlushFit</h1>
+              <h1 id="Blushfit">EmbarassFit</h1>
             </div>
             <div className="col-xs-4 line"><hr /></div>
             <div className="col-xs-12"><h1 id="Blushfitsub">For When Fear of Decreased Life Expectancy and Quality of Life are Not Enough</h1></div>

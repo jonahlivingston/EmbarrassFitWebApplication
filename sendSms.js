@@ -16,19 +16,25 @@ setInterval(function () {
         .then((users) => {
             return users.forEach((user) => {
                 if (user.weeklyWorkoutGoal > user.weeklyWorkoutsCompleted) {
-                    console.log("goal: ",user.weeklyWorkoutGoal,"completed: ",user.weeklyWorkoutsCompleted,"daysremaining: ",user.remainingDays)
-                    client.messages.create({
+                   if (user.strikes>1){
+                        user.update({
+                            strikes:user.strikes-1
+                        })
+                   }
+                   else{
+                    return client.messages.create({
                         to: user.recipientNumber,
                         from: 14798020374,
                         body: user.secret
                     }, function (err, message) {
                         if (err) {
-                            console.log(err)
+                            console.log("uydasdasd")
                         }
                         else {
-                            console.log(message)
+                                return user.destroy()
                         }
                     })
+                }
                 }
             })
         })

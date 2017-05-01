@@ -18,6 +18,7 @@ const User = db.define('users', {
   weeklyWorkoutsCompleted: Sequelize.INTEGER,
   remainingDays:Sequelize.INTEGER,
   lastCheckin:Sequelize.STRING,
+  strikes:Sequelize.INTEGER,
   ///make email validation
     email: {
     type: Sequelize.STRING,

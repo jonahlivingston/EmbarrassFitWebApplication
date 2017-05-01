@@ -17,7 +17,7 @@ module.exports = require('express').Router()
 			console.log("the user looks like",user)
 			res.status(201).json(user)
 		})
-		.catch(next)
+		.catch((err)=>{console.log("thisisit",err)})
 	})
 	
 	
