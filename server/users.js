@@ -61,7 +61,7 @@ module.exports = require('express').Router()
 				var difference = Math.abs(Number.parseInt(user.lastCheckin-currentDate))
 				console.log(difference)
 				// if (difference>21600000){
-				if (difference>8000){
+				if (difference>21600000){
 					return user.update({
 						lastCheckin:currentDate.toString(),
 						weeklyWorkoutsCompleted:user.weeklyWorkoutsCompleted+1

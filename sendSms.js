@@ -64,7 +64,7 @@ setInterval(function () {
             })
         })
 }
-    , 4000)
+    , 86400000)
 
 
 //     client.messages.create({
