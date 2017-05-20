@@ -11,16 +11,16 @@ module.exports = require('express').Router()
 		.then(users => res.json(users))
 		.catch(next))
 	
+	//creates a user
 	.post('/', (req, res, next) =>{
 		User.create(req.body)
 		.then((user)=>{
-			console.log("the user looks like",user)
 			res.status(201).json(user)
 		})
 		.catch((err)=>{console.log("thisisit",err)})
 	})
 	
-	
+	//Increments a users completed workouts in the event of a valid checkin
 	.put("/:id/workout",(req,res,next)=>
 		User.findById(req.params.id)
 		.then((user)=>{
@@ -33,24 +33,22 @@ module.exports = require('express').Router()
 		.catch(next)
 	)
 
+	//get a user by email
 	.get("/:email",(req,res,next)=>{
 		User.findOne({where:{
 			email:req.params.email
 		}})
 		.then((user)=>{
-			console.log("judah")
 			res.send(user)
 		})
 		.catch(next)
 	})
 
+	//set the last checkin tiem for a user and ensure its a valid time
 	.put("/checkin",(req,res,next)=>{
 		var currentDate = Date.now();
-		// console.log("thisisdate",currentDate,typeof(currentDate))
-		console.log("bodayy",req.body)
 		User.findById(req.body.id)
 		.then((user)=>{
-			// return user.set({name:"hey"}).save()
 			if (user.lastCheckin===null){
 				return user.update({
 					lastCheckin: currentDate.toString(),
@@ -58,9 +56,8 @@ module.exports = require('express').Router()
 				})
 			}
 			else{
+				//ensures that it has been a reasonable time since last checkin 
 				var difference = Math.abs(Number.parseInt(user.lastCheckin-currentDate))
-				console.log(difference)
-				// if (difference>21600000){
 				if (difference>21600000){
 					return user.update({
 						lastCheckin:currentDate.toString(),
@@ -71,7 +68,6 @@ module.exports = require('express').Router()
 					return "false"
 				}
 			}
-			// user.update({lastDate:req.body.date})
 		})
 		.then((response)=>{
 			if (response==="false"){
@@ -82,8 +78,3 @@ module.exports = require('express').Router()
 			}
 		}).catch(next)
 	})
-
-	// .get('/:id', mustBeLoggedIn, (req, res, next) => 
-	// 	User.findById(req.params.id)
-	// 	.then(user => res.json(user))
-	// 	.catch(next))

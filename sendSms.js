@@ -1,14 +1,20 @@
-const authToken = '1fde07aad6f3da36a62515fbab20f936'
-const SID = "ACf1034882e6ff1d71799127ffc9413454"
+const authToken = require("./twilio").authToken
+const SID = require("./twilio").SID
 const client = require("twilio")(SID, authToken)
 var testNumber = 1;
 const User = require('APP/db/models/user')
 const Sequelize = require("sequelize")
 var nodemailer = require('nodemailer');
+
+///This function is what sends Text messages if users don't workout enough
+///This function runs once per day
+
 setInterval(function () {
-    console.log("run")
+    
+    //Moves the day forward by one for all users
     User.IncrementDay()
 
+    //Find the users who have no days left that week to complete workouts
     User.findAll({
         where: {
             remainingDays: 0
@@ -16,9 +22,12 @@ setInterval(function () {
     })
         .then((users) => {
             return users.forEach((user) => {
+
+                //look at users who haven't completed enough workouts
                 if (user.weeklyWorkoutGoal > user.weeklyWorkoutsCompleted) {
+
+                    //look at users who have strikes left and send them an emailwarning
                     if (user.strikes > 1) {
-                        console.log(user.email)
                         var transporter = nodemailer.createTransport({
                             service: 'Outlook',
                             auth: {
@@ -39,13 +48,13 @@ setInterval(function () {
                                 console.log('Message sent: ');
                             };
                         })
+
+                        //remove a strike from the user
                         user.update({
                             strikes: user.strikes - 1
-
-
-
                         })
                     }
+                    // if the user has no strikes send them a text message using twilio
                     else {
                         return client.messages.create({
                             to: user.recipientNumber,
@@ -64,9 +73,7 @@ setInterval(function () {
             })
         })
 }
-    , 86400000)
-
-
+    , 5000)
 //     client.messages.create({
 //         to: 4159107352,
 //         from: 14798020374,
@@ -81,4 +88,4 @@ setInterval(function () {
 //     })
 // }, 5000)
 
-module.exports = "a"
+// module.exports = "a"

@@ -9,7 +9,6 @@ const OAuth = require ("./oauth")
 
 const User = db.define('users', {
   name: Sequelize.STRING,
-
   weeklyWorkoutGoal: Sequelize.INTEGER,
   latitude: Sequelize.FLOAT,
   longitude: Sequelize.FLOAT,
@@ -19,7 +18,7 @@ const User = db.define('users', {
   remainingDays:Sequelize.INTEGER,
   lastCheckin:Sequelize.STRING,
   strikes:Sequelize.INTEGER,
-  ///make email validation
+
     email: {
     type: Sequelize.STRING,
     validate: {
@@ -30,16 +29,14 @@ password_digest: Sequelize.STRING, // This column stores the hashed password in 
 password: Sequelize.VIRTUAL
 },{
 
-
-// }
-// ,
-
-
   hooks:{
     beforeCreate: setEmailAndPassword,
     beforeUpdate: setEmailAndPassword,
   },
   classMethods:{
+    
+    //Increment the day count for all users as a day passes.
+    //Tracks all users even with different start days to their weeks
     IncrementDay: function() {
       this.findAll()
       .then((Users)=>{

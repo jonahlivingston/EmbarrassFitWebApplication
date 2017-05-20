@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import { Circle } from 'rc-progress'
 export default class User extends Component {
     render() {
-        console.log(this.props.auth)
         const circleOne = this.props.auth ? <Circle percent={100 * this.props.auth.weeklyWorkoutsCompleted / this.props.auth.weeklyWorkoutGoal} strokeWidth="6" strokeColor="green" /> : <div>Loading</div>
         const oneComment = this.props.auth ? <h3 className="center white">{`${this.props.auth.weeklyWorkoutsCompleted}/${this.props.auth.weeklyWorkoutGoal}`}</h3> : <div>Loading</div>
         const circleTwo = this.props.auth ? <Circle id="circletwo" percent={100 * this.props.auth.remainingDays / 7} strokeWidth="6" strokeColor="green" /> : <div>Loading</div>
@@ -21,18 +20,19 @@ export default class User extends Component {
         }
         return (
             <div className="dashboard">
-                <h1 className="white" id="dashboardtitle">Dashboard</h1>
-                <div className="col-xs-2 border">
+                <div className="center">
+                <h1 className="white" id="dashboard-title">Dashboard</h1>
+                <div className="col-xs-3 border">
                     <h1 className="center white">Workouts Complete</h1>
                     {circleOne}
                     {oneComment}
                 </div>
-                <div className="col-xs-2 border">
+                <div className="col-xs-3 border">
                     <h1 className="center white">Days Remaining</h1>
                     {circleTwo}
                     {twoComment}
                 </div>
-                 <div className="col-xs-2 border">
+                 <div className="col-xs-3 border">
                     <h1 className="center white">Strikes Left</h1>
                     {circleThree}
                     {threeComment}
@@ -42,6 +42,7 @@ export default class User extends Component {
                 </div>
                 <div className="col-xs-10 border">
                     <h1 className="white">{lastCheckin}</h1>
+                </div>
                 </div>
             </div>
                     )

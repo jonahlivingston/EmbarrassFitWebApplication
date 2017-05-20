@@ -1,5 +1,7 @@
 import axios from 'axios'
 import {browserHistory} from "react-router"
+
+
 const reducer = (state=null, action) => {
   switch (action.type) {
   case AUTHENTICATED:
@@ -13,9 +15,9 @@ export const authenticated = user => ({
   type: AUTHENTICATED, user
 })
 
+//uses local authentication strategy and redirects to home page
 export const login = (username, password) =>
   dispatch =>{
-    console.log("username",username,"password",password)
     axios.post('/api/auth/login/local',
       {username, password})
       .then(() => {
@@ -33,6 +35,7 @@ export const logout = () =>
       .then(() => dispatch(whoami()))
       .catch(() => dispatch(whoami()))
 
+//gets user from session and attaches it to auth in the store
 export const whoami = () =>
   dispatch =>
     axios.get('/api/auth/whoami')
@@ -43,6 +46,7 @@ export const whoami = () =>
       .catch(failed => dispatch(authenticated(null)))
 
 
+//creates a user in the database
 export const createUser = (newUser) => dispatch => {
 	axios.post('/api/users', newUser)
 	.then((response) => {

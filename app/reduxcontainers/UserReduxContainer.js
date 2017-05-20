@@ -7,7 +7,5 @@ const mapStateToProps = (state) => {
     }
 }
 
-
-
 const UserReduxContainer = connect(mapStateToProps, null)(User)
 export default UserReduxContainer;
