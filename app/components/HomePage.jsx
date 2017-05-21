@@ -9,13 +9,13 @@ const Homepage = () => {
         <div>
           <div className="col-xs-4 line"><hr /></div>
           <div className="col-xs-4">
-            <h1 id="blushfit">EmbarassFit</h1>
+            <h1 id="blushfit">EmbarrassFit</h1>
           </div>
           <div className="col-xs-4 line"><hr /></div>
           <div className="col-xs-12"><h1 id="blushfit-sub">For When Fear of Decreased Life Expectancy and Quality of Life are Not Enough</h1></div>
           <div className="col-xs-4">
             <Link to={"/signup"}>
-              <button className="ghost-button" id="signup-button">Signup/Risk Embarassment</button>
+              <button className="ghost-button" id="signup-button">Signup/Risk Embarrassment</button>
             </Link>
           </div>
         </div>
