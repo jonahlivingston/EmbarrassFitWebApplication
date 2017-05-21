@@ -37,7 +37,7 @@ const Homepage = () => {
           <p>Hit the gym and checkin on our mobile app that will ensure you are actually at the gym. </p>
         </div>
         <div className="col-xs-4">
-          <h3 className="center">Miss your goal, get embarassed</h3>
+          <h3 className="center">Miss your goal, get embarrassed</h3>
           <div className="panel-image" id="laughing-pic">
           </div>
           <p>Miss your weekly goal and we will text the number you have provided divulging your secret</p>
