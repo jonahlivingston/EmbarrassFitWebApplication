@@ -13,9 +13,6 @@ const Navbar = (props) => {
                     <Link to="/signup">
                         <li className="navbar-text" id="white" >Signup</li>
                     </Link>
-                    <Link to="/testemonials">
-                        <li className="navbar-text" id="white">Testemonials</li>
-                    </Link>
                     <Link to="/dashboard">
                         <li className="navbar-text" id="white">{props.auth && `${props.auth.name}'s dashboard`}</li>
                     </Link>
