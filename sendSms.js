@@ -1,5 +1,5 @@
-const authToken = require("./twilio")
-const SID = require("./twilio")
+const authToken= '1fde07aad6f3da36a62515fbab20f936'
+const SID= 'ACf1034882e6ff1d71799127ffc9413454'
 const client = require("twilio")(SID, authToken)
 var testNumber = 1;
 const User = require('APP/db/models/user')
